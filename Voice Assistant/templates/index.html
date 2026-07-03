@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria &mdash; Voice Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================== Header ============================== -->
+  <header class="app-header">
+    <div class="wordmark">
+      <span class="wordmark-orb" aria-hidden="true"></span>
+      <span class="wordmark-text"></span>
+    </div>
+    <div class="header-status" id="header-status">
+      <span class="status-dot" id="status-dot"></span>
+      <span class="status-label" id="status-label">Idle</span>
+    </div>
+  </header>
+
+  <!-- ============================== Chat ============================== -->
+  <main class="chat-viewport" id="chat-viewport">
+    <div class="chat-log" id="chat-log">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-orb" aria-hidden="true"></div>
+        <p class="empty-title">Press Start Recording and say something</p>
+        <p class="empty-subtitle">Try &ldquo;hello&rdquo;, ask a question, or say &ldquo;exit&rdquo; to end the conversation.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================== Control Dock ============================== -->
+  <footer class="control-dock">
+
+    <div class="live-caption" id="live-caption" aria-live="polite"></div>
+
+    <div class="dock-inner">
+
+      <div class="waveform" id="waveform" aria-hidden="true">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <div class="mic-controls">
+        <button type="button" id="start-btn" class="mic-btn mic-btn--start">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M19 11a7 7 0 0 1-14 0M12 18v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>Start Recording</span>
+        </button>
+
+        <button type="button" id="stop-btn" class="mic-btn mic-btn--stop" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>
+          </svg>
+          <span>Stop Recording</span>
+        </button>
+
+        <button type="button" id="restart-btn" class="mic-btn mic-btn--restart" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 4v6h6M20 20v-6h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.5 15a7.5 7.5 0 1 0 1.4-8.4L4 9M18.5 9a7.5 7.5 0 0 0-1.4-2.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Start New Conversation</span>
+        </button>
+      </div>
+
+      <p class="dock-hint" id="dock-hint">Say &ldquo;exit&rdquo; anytime to end the conversation</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

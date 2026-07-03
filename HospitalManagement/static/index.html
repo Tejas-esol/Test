@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Hospital Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar for Patients and Status -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-hospital-user"></i>
+                <h2>Hospital AI</h2>
+            </div>
+            
+            <div class="section">
+                <h3>Select Patient</h3>
+                <div class="patient-selector">
+                    <select id="patientSelect">
+                        <option value="P001">P001 - John Doe</option>
+                        <option value="P002" selected>P002 - Alice Smith</option>
+                    </select>
+                </div>
+                <div class="action-links">
+                    <a href="#" id="viewPatientBtn"><i class="fa-solid fa-user"></i> View Profile</a>
+                    <a href="#" id="newPatientBtn"><i class="fa-solid fa-user-plus"></i> Add New</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Example Queries</h3>
+                <ul class="example-list">
+                    <li onclick="setQuery('I have chest pain. Book the earliest appointment with a cardiologist. Check whether I already have an ECG report. If not, schedule an ECG test. Finally notify me with all the details.')">
+                        Full Workflow (Cardiology + ECG + Notify)
+                    </li>
+                    <li onclick="setQuery('Check whether I already have an ECG report. If not, schedule an ECG test.')">
+                        Lab Check Only
+                    </li>
+                    <li onclick="setQuery('Book an orthopedic appointment for my knee pain.')">
+                        Booking Only
+                    </li>
+                </ul>
+            </div>
+
+            <div class="system-status">
+                <p><i class="fa-solid fa-database"></i> SQLite Connected</p>
+                <button id="resetDbBtn" class="btn-secondary btn-sm">Reset DB</button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <div class="chat-header">
+                <h2>Multi-Agent Workflow Console</h2>
+                <div class="header-actions">
+                    <span id="agentStatus" class="status-badge idle">Idle</span>
+                </div>
+            </div>
+            
+            <div class="chat-history" id="chatHistory">
+                <!-- Chat messages will appear here -->
+                <div class="welcome-message">
+                    <h3>Welcome to the Agentic Hospital Management System</h3>
+                    <p>Select a patient on the left and enter your request below. The system's agents will collaborate to resolve it.</p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <textarea id="queryInput" placeholder="Type your medical request here... (e.g., Book an appointment with a cardiologist)" rows="3"></textarea>
+                <button id="sendBtn" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Send
+                </button>
+            </div>
+        </main>
+
+        <!-- Right Panel for Traces and Logs -->
+        <aside class="right-panel">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="output">Output</button>
+                <button class="tab-btn" data-tab="tasks">Task Trace</button>
+                <button class="tab-btn" data-tab="messages">Agent Messages</button>
+                <button class="tab-btn" data-tab="logs">System Logs</button>
+            </div>
+            
+            <div class="tab-content active" id="outputTab">
+                <pre id="jsonOutput" class="code-block">Awaiting request...</pre>
+            </div>
+            
+            <div class="tab-content" id="tasksTab">
+                <div id="taskTrace" class="trace-list"></div>
+            </div>
+            
+            <div class="tab-content" id="messagesTab">
+                <div id="messageTrace" class="message-list"></div>
+            </div>
+
+            <div class="tab-content" id="logsTab">
+                <div id="systemLogs" class="log-list"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="patientModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Patient Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Core (no external dependencies required for agent system)
+# Optional: Gradio web UI
+gradio>=4.0.0
+
+# Optional: Gemini LLM-backed NLU
+google-genai>=1.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
