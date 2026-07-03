@@ -15,6 +15,8 @@ architecture"** at the bottom for the reasoning.
    the speech (word by word), so you can read and listen at once.
 5. Say **"exit"** at any point to end the conversation gracefully.
 
+**Note on Recent Updates:** The project has been restructured to correctly place HTML, CSS, and JS files into their respective `templates/` and `static/` directories as required by Flask. Additionally, `.env` files are now securely ignored by Git.
+
 Recording, processing, thinking, and speaking are all shown as distinct
 visual states so you always know what the app is doing.
 

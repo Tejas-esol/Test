@@ -109,12 +109,13 @@ python -m HospitalManagement.app
 
 ### Enable Gemini NLU (Optional)
 
-```bash
-set GEMINI_API_KEY=your-api-key-here
-python -m HospitalManagement.run_demo
+1. Create a `.env` file in the root of the `HospitalManagement` directory.
+2. Add your Gemini API key to the `.env` file like this:
+```env
+GEMINI_API_KEY=your-api-key-here
 ```
 
-When a Gemini API key is set, the system uses Gemini for intent extraction with automatic fallback to the rule-based NLU if the API call fails.
+When a Gemini API key is set in the `.env` file, the system automatically uses Gemini for intent extraction with automatic fallback to the rule-based NLU if the API call fails.
 
 ## Sample Output
 
